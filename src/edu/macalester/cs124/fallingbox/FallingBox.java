@@ -20,23 +20,22 @@ public class FallingBox extends GraphicsProgram {
         	//if(dy + SQUARE_SIZE < getHeight())
         	if(down)
         	{
-	        	if(square.getLocation().getY() + SQUARE_SIZE < getHeight()) {
-	        		dy += i * .02;
+	        	if(square.getY() + SQUARE_SIZE <= getHeight()) {
+	        		dy += 1;
 	        		//dy *= 1.1;
 	        		square.move(dx, dy);
 	        	}
-	        	else
-	        	{
-	        		square.move(dx, getHeight() - (square.getLocation().getY() + SQUARE_SIZE));
+	        	else {
+	        		//dy += getHeight() - (square.getY() + SQUARE_SIZE);
+	        		//square.move(dx, getHeight() - (square.getY() + SQUARE_SIZE));
 	        		down = false;
-	        		dy = -dy;
+	        		dy = -dy - 1;
+	        		System.out.println(dy);
 	        	}
         	}
-	        else
-	        {
-	        	if(dy < 0)
-	        	{
-	        		dy += i * .02;
+	        else {
+	        	if(dy <= 0) {
+	        		dy += 1;
 	        		square.move(dx, dy);
 	        	}
 	        	else
